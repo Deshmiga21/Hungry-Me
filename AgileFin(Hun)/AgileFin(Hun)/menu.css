@@ -1,0 +1,180 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: beige;
+    color: maroon;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-section {
+    padding: 10px;
+    text-align: center;
+    background-color: beige;
+}
+
+.menu-section h2 {
+    font-size: 36px;
+    color: maroon;
+    margin-bottom: 30px;
+}
+
+.menu-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.menu-item {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.menu-item:hover {
+    transform: scale(1.05);
+}
+
+.menu-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.menu-item h3 {
+    font-size: 24px;
+    color: maroon;
+    margin-top: 15px;
+}
+
+.menu-item p {
+    margin: 10px 0;
+    color: brown;
+}
+
+.menu-item .price {
+    font-size: 1.5rem;
+    color: orange;
+    font-weight: bold;
+}
+
+.menu-item .add-to-cart-btn {
+    background-color: brown;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.menu-item .add-to-cart-btn:hover {
+    background-color: maroon;
+}
+
+
+.filter-section {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.filter-section select {
+    padding: 10px;
+    margin: 0 10px;
+    border-radius: 5px;
+    border: 1px solid maroon;
+    cursor: pointer;
+}
+
+button {
+    background-color: orange;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: brown;
+}
+
+header {
+    background-color: orange;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo img {
+    height: 50px;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: inline;
+  }
+  
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  nav ul li a:hover {
+    color: yellow;
+  }
+  
+  .cart-btn {
+    background-color: brown;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+  .cart-btn span {
+    margin-left: 8px;
+  }
+
+ 
+footer {
+    background-color: maroon;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+  }
+  
+  form {
+    background-color: beige;
+    padding: 20px;
+    border-radius: 8px;
+    color: maroon;
+  }
+  
+  button {
+    background-color: orange;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hungry Me | Online Food Delivery</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="scripts.js" defer></script>
+</head>
+<body>
+ 
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="C:\Users\Asus\Desktop\AgileFin(Hun)\logo.jpg" alt="Hungry Me Logo" height="50">Hungry Me
+      </div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="promotions.html">Promotions</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+        <li><a href="signin.html">Sign In</a></li>
+        <li><a href="admin.html">Admin</a></li>
+      </ul>
+      <button class="cart-btn">
+        🛒 <span id="cart-count">0</span>
+      </button>
+    </nav>
+  </header>
+
+
+  <main>
+    <section class="hero-section">
+      <h1>Delicious Food, Delivered to You</h1>
+      <p>Browse your favorite cuisine, explore menus, and enjoy exclusive deals.</p>
+      <a href="menu.html" class="cta-button">Order Now</a>
+    </section>
+
+   
+    <section class="search-section">
+      <input type="text" id="searchBar" placeholder="Search for Restaurants or Cuisines...">
+      <button id="searchBtn" onclick="searchRestaurants()">🔍 Search</button>
+      <div id="search-feedback">
+ </div>
+    </section>
+
+    
+    <section class="restaurant-listings">
+      <h2>Popular Menus</h2>
+      <div id="restaurant-list">
+       
+      </div>
+      <div id="loading" style="display:none;">Loading...</div> 
+    </section>
+  </main>
+
+
+  <footer>
+    <p>© 2024 Hungry Me | Kandy's Favorite Food Delivery Service</p>
+  </footer>
+</body>
+</html>

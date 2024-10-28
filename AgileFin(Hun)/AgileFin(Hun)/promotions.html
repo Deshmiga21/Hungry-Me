@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promotions | Hungry Me</title>
+  <link rel="stylesheet" href="promotions.css">
+  <script src="promotions.js" defer></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="C:\Users\Asus\Desktop\AgileFin(Hun)\logo.jpg" alt="Hungry Me Logo" height="50">Hungry Me
+      </div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="promotions.html">Promotions</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+        <li><a href="signin.html">Sign In</a></li>
+        <li><a href="admin.html">Admin</a></li>
+      </ul>
+      <button class="cart-btn">
+        🛒 <span id="cart-count">0</span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="promotions-section">
+      <h2>Current Promotions</h2>
+      <div id="offers">
+       </div>
+      <form id="coupon-form" onsubmit="applyCoupon(event)">
+        <label for="coupon">Enter Coupon Code:</label>
+        <input type="text" id="coupon" name="coupon" required>
+        <button type="submit">Apply</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2024 Hungry Me | Kandy's Favorite Food Delivery Service</p>
+  </footer>
+</body>
+</html>
