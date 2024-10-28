@@ -1,0 +1,31 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+header h1 {
+    text-align: center;
+}
+
+#cart-list {
+    margin: 20px 0;
+}
+
+#total-price {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+button {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    display: block;
+    margin: 20px 0;
+    width: 100%;
+}
+
+button:hover {
+    background-color: darkorange;
+}

@@ -1,0 +1,251 @@
+1. Database Creation
+sql
+Copy code
+CREATE DATABASE hungry_me_db;
+USE hungry_me_db;
+
+
+To complete the implementation with MySQL, here are the MySQL tables and queries you will need for managing user authentication, menu items, cart, orders, and other features.
+
+1. Database Creation
+sql
+Copy code
+CREATE DATABASE hungry_me_db;
+USE hungry_me_db;
+2. Users Table
+This table will store user information for sign-up, sign-in, and password reset.
+
+sql
+Copy code
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+Example Queries:
+
+Sign-up (Registering a User):
+
+sql
+Copy code
+INSERT INTO users (username, email, password)
+VALUES ('JohnDoe', 'john@example.com', 'hashed_password');
+Sign-in (Authenticating a User):
+
+sql
+Copy code
+SELECT * FROM users WHERE email = 'john@example.com' AND password = 'hashed_password';
+3. Menu Items Table
+This table will store information about the food items available in the restaurant.
+
+sql
+Copy code
+CREATE TABLE menu_items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    price DECIMAL(10, 2) NOT NULL,
+    cuisine VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+Example Queries:
+
+Insert Menu Item:
+
+sql
+Copy code
+INSERT INTO menu_items (name, description, price, cuisine)
+VALUES ('Chicken Biryani', 'Delicious Indian biryani with spices', 1200.00, 'indian');
+Fetch Menu Items by Cuisine:
+
+sql
+Copy code
+SELECT * FROM menu_items WHERE cuisine = 'indian';
+Fetch All Menu Items:
+
+sql
+Copy code
+SELECT * FROM menu_items;
+4. Cart Table
+The cart table will store items added to the cart by users before they place their order.
+
+sql
+Copy code
+CREATE TABLE cart (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    menu_item_id INT,
+    quantity INT NOT NULL,
+    added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (menu_item_id) REFERENCES menu_items(id)
+);
+Example Queries:
+
+Add Item to Cart:
+
+sql
+Copy code
+INSERT INTO cart (user_id, menu_item_id, quantity)
+VALUES (1, 2, 1);
+View Cart for User:
+
+sql
+Copy code
+SELECT m.name, m.price, c.quantity, (m.price * c.quantity) AS total_price
+FROM cart c
+JOIN menu_items m ON c.menu_item_id = m.id
+WHERE c.user_id = 1;
+Update Quantity in Cart:
+
+sql
+Copy code
+UPDATE cart
+SET quantity = quantity + 1
+WHERE user_id = 1 AND menu_item_id = 2;
+Remove Item from Cart:
+
+sql
+Copy code
+DELETE FROM cart WHERE user_id = 1 AND menu_item_id = 2;
+5. Orders Table
+This table will handle the orders placed by users, along with the total amount and order status.
+
+sql
+Copy code
+CREATE TABLE orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    total_amount DECIMAL(10, 2) NOT NULL,
+    order_status VARCHAR(50) DEFAULT 'Pending',
+    placed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+Example Queries:
+
+Place an Order:
+
+sql
+Copy code
+INSERT INTO orders (user_id, total_amount)
+VALUES (1, 2500.00);
+Update Order Status:
+
+sql
+Copy code
+UPDATE orders
+SET order_status = 'Delivered'
+WHERE id = 1;
+6. Order Items Table
+This table will store details about each item in the order, including quantity and price at the time of the order.
+
+sql
+Copy code
+CREATE TABLE order_items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT,
+    menu_item_id INT,
+    quantity INT NOT NULL,
+    price_at_order DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders(id),
+    FOREIGN KEY (menu_item_id) REFERENCES menu_items(id)
+);
+Example Queries:
+
+Insert Order Items:
+
+sql
+Copy code
+INSERT INTO order_items (order_id, menu_item_id, quantity, price_at_order)
+VALUES (1, 2, 1, 1200.00);
+View Order Details:
+
+sql
+Copy code
+SELECT o.id, oi.quantity, oi.price_at_order, m.name
+FROM order_items oi
+JOIN orders o ON oi.order_id = o.id
+JOIN menu_items m ON oi.menu_item_id = m.id
+WHERE o.id = 1;
+7. Coupons and Promotions Table
+To apply discounts and promotions.
+
+sql
+Copy code
+CREATE TABLE promotions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    code VARCHAR(50) NOT NULL UNIQUE,
+    discount_percentage INT NOT NULL,
+    expiry_date DATE
+);
+Example Queries:
+
+Insert a Promotion:
+
+sql
+Copy code
+INSERT INTO promotions (code, discount_percentage, expiry_date)
+VALUES ('DISCOUNT10', 10, '2024-12-31');
+Apply a Promotion:
+
+sql
+Copy code
+SELECT * FROM promotions WHERE code = 'DISCOUNT10' AND expiry_date > NOW();
+8. Reviews Table
+This table stores user reviews and ratings for restaurants and food items.
+
+sql
+Copy code
+CREATE TABLE reviews (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    menu_item_id INT,
+    rating INT CHECK (rating BETWEEN 1 AND 5),
+    review_text TEXT,
+    review_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (menu_item_id) REFERENCES menu_items(id)
+);
+Example Queries:
+
+Insert a Review:
+
+sql
+Copy code
+INSERT INTO reviews (user_id, menu_item_id, rating, review_text)
+VALUES (1, 2, 5, 'Excellent biryani! Highly recommended.');
+View Reviews for a Menu Item:
+
+sql
+Copy code
+SELECT u.username, r.rating, r.review_text, r.review_date
+FROM reviews r
+JOIN users u ON r.user_id = u.id
+WHERE r.menu_item_id = 2;
+9. Admin Management Table
+This table will store admin-specific data to manage restaurant listings and orders.
+
+sql
+Copy code
+CREATE TABLE admins (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
+);
+Example Queries:
+
+Admin Login:
+
+sql
+Copy code
+SELECT * FROM admins WHERE email = 'admin@example.com' AND password = 'hashed_password';
+View and Update Order Statuses (Admin):
+
+sql
+Copy code
+UPDATE orders
+SET order_status = 'Delivered'
+WHERE id = 1;

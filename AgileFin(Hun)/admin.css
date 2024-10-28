@@ -1,0 +1,99 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: beige;
+    color: maroon;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    background-color: orange;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+h1 {
+    margin: 0;
+}
+
+
+form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+form input, form select, form button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid maroon;
+}
+
+form button {
+    background-color: brown;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: maroon;
+}
+
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 500px;
+}
+
+li {
+    background-color: white;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+li button {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+li button:hover {
+    background-color: maroon;
+}
+
+
+footer {
+    background-color: maroon;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}

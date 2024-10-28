@@ -1,0 +1,13 @@
+CREATE TABLE orders (
+  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  address VARCHAR(255) NOT NULL,
+  total DECIMAL(10,2) NOT NULL
+);
+
+CREATE TABLE order_items (
+  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  order_id INT(6),
+  item_name VARCHAR(50),
+  price DECIMAL(10,2),
+  FOREIGN KEY (order_id) REFERENCES orders(id)
+);
